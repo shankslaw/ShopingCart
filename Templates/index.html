@@ -1,0 +1,146 @@
+{% extends 'root.html'%}
+{% load static %}
+<!--searchbar-->
+{% block header %}
+<div class="header_section">
+             <div class="container">
+                 <div class="containt_main">
+
+                     <div id="mySidenav" class="sidenav">
+                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                         <div id="sidenavbar">
+
+                            {% if user.is_authenticated %}
+                            <h3 style="color: #f26522; margin-left: 30px;">"Hello {{user.username}}!"</h3>
+                             {% endif %}
+
+                             {% for ct in ctgry %}
+                             <a class="dropdown-item" href="{{ct.get_url}}">{{ct.c_name}}</a>
+                             {% endfor %}
+                             <hr id="dash-elements" style="border-color:white;">
+                         </div>
+
+                         {% if user.is_authenticated %}
+                         <li id="dash-elements"><a href="{% url 'Accounts:logout' %}">Logout</a><li>
+                         <li id="dash-elements"><a href="{% url 'cart_details' %}">Cart</a><li>
+                         {% else %}
+                         <li id="dash-elements"><a href="{% url 'Accounts:login' %}">Login</a><li>
+                         <li id="dash-elements"><a href="{% url 'cart_details' %}">Cart</a><li>
+                         {% endif %}   
+
+                     </div>
+                     
+
+                     <span class="toggle_icon" onclick="openNav()"><img src="{% static 'images/toggle-icon.png' %}"></span>
+                     <div class="dropdown">
+                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   Filter   
+                      </button>
+                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                             <ul>
+                             <li><a class="dropdown-item" href="/">All</a></li>
+                             {% for ct in ctgry %}
+                             <li><a class="dropdown-item" href="{{ct.get_url}}">{{ct.c_name}}</a></li>
+                             {% endfor %}
+                             </ul>
+                         </div>
+                     </div>
+                     <div class="main">
+                         <!-- Another variation with a button -->
+                         <!--search bar with icon -->
+                         
+                         <div >
+                            <form  class="input-group" method="get" action="/search">
+                                <input type="text" class="form-control" placeholder="Search items" name='q' id='q'>
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" type="submit" style="background-color: #f26522; border-color:#f26522 ">
+                                    <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>    
+                         </div>
+                         <!--search bar end-->
+                     </div>
+                 
+                     <div class="header_box">
+                         <div class="login_menu" id="dash-element">
+                             <ul>
+                                 <li>
+                                     <a href="">
+                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                         <span class="padding_10">Cart</span></a>
+                                 </li>
+                                 <li>
+                                    {% if user.is_authenticated %}
+                
+                                    <a href="{% url 'Accounts:logout' %}">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span class="padding_10">Logout</span></a>
+                                    
+                                    {% else %}    
+                                    <a href="{% url 'Accounts:login' %}">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span class="padding_10">Login</span></a>
+                                {% endif %}
+
+                                 </li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+{% endblock %}
+<!--searchbar end -->
+{% block content %}
+<!-- banner section start -->
+<div class="banner_section layout_padding">
+    <div class="container">
+        <div id="my_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="banner_taital">Get Start <br>Your favriot shoping</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="banner_taital">Get Start <br>Your favriot shoping</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+        <div class="container" style="padding-top:50px">
+            <div class="container text-center">
+               {% for pdt in pg.object_list %}
+               <div class="card" style="width: 19rem; display: inline-block; margin-right: 20px; margin-left: 20px;">
+                    <div class="card-body">
+                      <a href="/item/{{pdt.id}}"><img src="{{pdt.p_image.url}}" class="card-img-top" alt="{{pdt.p_name}}"></a>
+                      <h3 class="shirt_text">{{pdt.p_name}}</h3>
+                      <p class="price_text">Price <span style="color: #262626;">{{pdt.p_price}} ₹</span></p>
+                      <p class="card-text">{{ pdt.p_desc|truncatewords:3 }}</p>
+                      <a href="/item/{{pdt.id}}" class="btn btn-primary">Buy Now</a>
+                   </div>
+               </div> 
+                {% endfor %}
+            </div>
+        </div>
+</div>
+
+<!-- banner section end -->
+{% endblock %}
+

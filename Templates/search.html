@@ -1,0 +1,26 @@
+{% extends 'root.html' %}
+
+{% block content %}
+<div class="banner_section layout_padding">
+    <div class="container" style="padding-top:50px">
+        <div class="container text-center">
+           {% for i in pr %}
+           <div class="card" style="width: 19rem; display: inline-block; margin-right: 20px; margin-left: 20px;">
+                <div class="card-body">
+                  <a href="/item/{{i.id}}"><img src="{{i.p_image.url}}" class="card-img-top" alt="{{i.p_name}}"></a>
+                  <h3 class="shirt_text">{{i.p_name}}</h3>
+                  <p class="price_text">Price <span style="color: #262626;">{{i.p_price}} ₹</span></p>
+                  <p class="card-text">{{ i.p_desc|truncatewords:3 }}</p>
+                  <a href="/item/{{i.id}}" class="btn btn-primary">Buy Now</a>
+               </div>
+           </div> 
+            {% endfor %}
+        </div>
+     </div>
+</div>
+{% endblock %}
+
+
+
+
+

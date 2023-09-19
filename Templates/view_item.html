@@ -1,0 +1,93 @@
+{% extends 'root.html' %}
+{% load static %}
+<!--searchbar-->
+{% block header %}
+<div class="header_section">
+             <div class="container">
+                 <div class="containt_main">
+                     <div id="mySidenav" class="sidenav">
+                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                         <div id="sidenavbar">
+                             {% for ct in ctgry %}
+                             <a class="dropdown-item" href="{{ct.get_url}}">{{ct.c_name}}</a>
+                             {% endfor %}
+                             <hr id="dash-elements" style="border-color:white;">
+                         </div>
+                         <li id="dash-elements"><a href="{% url 'Accounts:login' %}">Login</a><li>
+                         <li id="dash-elements"><a href="{% url 'cart_details' %}">Cart</a><li>
+                     </div>
+                     <span class="toggle_icon" onclick="openNav()"><img src="{% static 'images/toggle-icon.png' %}"></span>
+                     <div class="dropdown">
+                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">   Filter   
+                      </button>
+                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                             <ul>
+                             <li><a class="dropdown-item" href="/">All</a></li>
+                             {% for ct in ctgry %}
+                             <li><a class="dropdown-item" href="{{ct.get_url}}">{{ct.c_name}}</a></li>
+                             {% endfor %}
+                             </ul>
+                         </div>
+                     </div>
+                     <div class="main">
+                         <!-- Another variation with a button -->
+                         <!--search bar with icon -->
+                         
+                         <div >
+                            <form  class="input-group" method="get" action="/search">
+                                <input type="text" class="form-control" placeholder="Search items" name='q' id='q'>
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" type="submit" style="background-color: #f26522; border-color:#f26522 ">
+                                    <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>    
+                         </div>
+                         <!--search bar end-->
+                     </div>
+                 
+                     <div class="header_box">
+                         <div class="login_menu" id="dash-element">
+                             <ul>
+                                 <li>
+                                     <a href="{% url 'cart_details' %}">
+                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                         <span class="padding_10">Cart</span></a>
+                                 </li>
+                                 <li>
+                                     <a href="{% url 'Accounts:login' %}">
+                                         <i class="fa fa-user" aria-hidden="true"></i>
+                                         <span class="padding_10">Login</span></a>
+                                 </li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+{% endblock %}
+<!--searchbar end -->
+
+{% block content %}
+<div class="card mb-3" style="padding-top: 50px; padding-bottom: 50px; max-width: 750px; max-height:auto; margin-left:auto; margin-right:auto; margin-top:50px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ids.p_image.url}}" class="img-fluid rounded-start" alt="{{ids.p_name}}" >
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <b><h1 class="card-title" style="text-align:center;">{{ids.p_name.upper}}</h1></b>
+          <p class="card-text" style="text-align:center;">{{ids.p_desc}}</p>
+          {% comment %} <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> {% endcomment %}
+          <div class="buycart" style="float:left; padding-left:65px;">
+            <a href="{% url 'add_to_cart' ids.id %}" class="btn btn-warning" style="padding:10px;">Add to cart</a>
+            </div>
+            <div class="buycart" style="float:right; padding-right:65px"">
+             <a href="#" class="btn btn-info" style="padding:10px;" >Buy Now</a>
+             </div>
+        
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock%}

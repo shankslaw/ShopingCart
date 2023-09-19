@@ -1,0 +1,306 @@
+{% extends 'root.html'%}
+{% load static %}
+{% comment %} <html>
+  <head><title>cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--  -->
+    <!-- owl stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesoeet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .img-cart {
+        display: block;
+        max-width: 100px;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    table tr td{
+        border:1px solid #FFFFFF;    
+    }
+    
+    table tr th {
+        background:#eee;    
+    }
+    
+    .panel-shadow {
+        box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+    }
+    </style>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  </head>
+     <body>
+      
+      <body>
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="container bootstrap snippets bootdey">
+    <div class="col-md-9 col-sm-8 content" style="width: 100%; margin-top:40px;">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                  <li><a href="/" class="btn btn-outline-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                  </svg></a></li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info panel-shadow">
+                    <div class="panel-heading">
+                        <h3>
+                            <img class="img-circle img-thumbnail" src="https://bootdey.com/img/Content/user_3.jpg">
+                            Matew darfkmoun
+                        </h3>
+                    </div>
+                    <div class="panel-body"> 
+                        <div class="table-responsive">
+                          ------fullbody-----
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Description</th>
+                                <th>Qty</th>
+                                <th></th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                             >>>>>>>>>>>>>
+                             {% for i in ci %}
+                                <tr>
+                                    <td><a href="{{i.prdt.get_url}}"><img src="{{i.prdt.p_image.url}}" class="img-cart" style="display: inline-flex;width:50px;height:50px;"></a></td>
+                                    <td><strong>{{i.prdt.url}}</strong><p>{{i.prdt.p_name}}</p></td>
+                                    <td>
+                                    <form class="form-inline">
+                                        <input class="form-control" type="text" value="{{t}}">
+                                      </form>
+                                    </td>
+                                    <td>
+                                        <button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button>
+                                        <a href="#" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                    <td>{{i.prdt.p_price}}</td>
+                                    <td>1*4</td>
+                                </tr>
+                              {% endfor %}
+                                <tr>
+                                    <td colspan="7">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="text-right">Total Product</td>
+                                    <td>86.00₹</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="text-right">Total Shipping</td>
+                                    <td>{{cn}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="text-right"><strong>Total</strong></td>
+                                    <td>{{t}} ₹</td>
+                                </tr>
+
+                               
+                                <<<<<<<<<<<
+                            </tbody>
+                        </table>
+                        -----fulbody----
+
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--next-->
+    <div  class="nextbtn" style="padding-top:25px;">
+    <div class="buycart" style="float:right;">
+    <a href="#" class="btn btn-outline-primary">Next      
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+      <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+    </svg></a>
+    </div>
+    <div class="buycart" style="float:right; padding-right:35px;">
+    <a href="/" class="btn btn-outline-success" style="float:right;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+        <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+      </svg>Continue Shopping</a>
+    </div>
+  </div>
+  <!--end next button-->
+</div>
+    </body>  
+</html> {% endcomment %}
+
+{% block css %}
+<style>
+  body {
+    font-family: Arial;
+    font-size: 17px;
+    padding: 8px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 -16px;
+  }
+  
+  .col-25 {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+  }
+  
+  .col-50 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+  }
+  
+  .col-75 {
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
+  }
+  
+  .col-25,
+  .col-50,
+  .col-75 {
+    padding: 0 16px;
+  }
+  
+  .container1 {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+  }
+  
+  input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+  }
+  
+  .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+  
+  .btn:hover {
+    background-color: #45a049;
+  }
+  
+  a {
+    color: #2196F3;
+  }
+  
+  hr {
+    border: 1px solid lightgrey;
+  }
+  
+  span.price {
+    float: right;
+    color: grey;
+  }
+
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+  @media (max-width: 800px) {
+    .row {
+      flex-direction: column-reverse;
+    }
+    .col-25 {
+      margin-bottom: 20px;
+    }
+  }
+  </style>
+  </style>
+{% endblock %}
+
+{% block header %}
+<div class="header_section">
+  <div class="container"></div>
+</div>  
+{% endblock %}
+
+{% block content %}
+
+<body>
+  
+  <div class="col-25">
+    <div class="container1">
+      <h4><b>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i>4</span></h4></b>
+      {% for i in ci %}
+      <p>
+        <a href="{{i.prdt.get_url}}"><img src="{{i.prdt.p_image.url}}" class="img-cart" style="display: inline-flex;width:50px;height:50px;"></a>
+      </p>
+      <p>
+        <a href="{{i.prdt.get_url}}">{{i.prdt.p_name}}</a>
+        <span class="price">
+          <a href="{% url 'remove' i.prdt.id %}">&nbsp;&nbsp;&nbsp;<i class="fa fa-trash"></i></a><br>
+          {{i.total}} ₹<br>
+          <a href="{% url 'cart_decrement' i.prdt.id %}"><i class="fa fa-minus" style="font-size:10px"></i> </a>
+          {{i.qnty}} 
+          <a href="{% url 'add_to_cart' i.prdt.id %}">  <i class="fa fa-plus" style="font-size:10px"></i></a>
+        </span>
+      </p>
+      <p>{{i.prdt.p_price}} ₹</p>
+      <p>Quantity {{i.qnty}}</p>
+      <button class="btn"><i class='fas fa-cart-arrow-down' style='font-size:20px'></i> Buy Now</button>
+      <hr>
+      {% endfor %}
+      <p>Total <span class="price" style="color:black"><b>{{t}} ₹</b></span></p>
+    </div>
+  </div>
+</div>
+
+</body>
+     
+{% endblock %}

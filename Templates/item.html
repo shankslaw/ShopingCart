@@ -1,0 +1,19 @@
+{% extends 'root.html' %}
+   {% block content %}       
+            <div class="container">
+               <h1 class="fashion_taital" style="color:white">Electronics</h1>
+                  
+               <div class="container text-center">
+                  {% for ct in ctgry %}
+                  <div class="card" style="width: 18rem; display:inline-block; border-radius:15px">
+                     <img src="{{ct.c_image.url}}" class="card-img-top" alt="{{ct.c_name}}" style="border-top-left-radius:15px; border-top-right-radius:15px;" >
+                        <div class="card-body">
+                           <h5 class="card-title">{{ct.c_name}}</h5>
+                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content| truncatewords :17</p>
+                           <a href="#" class="btn btn-primary">Buy Now</a>
+                        </div>
+                  </div>
+                  {% endfor %}
+               </div>
+            </div>
+   {% endblock %}
